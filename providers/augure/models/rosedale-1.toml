@@ -4,9 +4,9 @@
 # developer key; reasoning_effort: "none" is served as "low", no thinking-off mode;
 # image_url and PDF file parts on every model; temperature and top_p, no top_k), and
 # https://augureai.ca/docs/changelog.
-# Effort: the API accepts none|minimal|low|medium|high; on this model "none" is served
-# as "low" and "minimal"/"medium" do not reduce cost (changelog 2026-09-29), so only the
-# levels that change what is served are listed.
+# Effort: the API accepts none|minimal|low|medium|high and forwards the literal; on this
+# model "none" is served as "low" (docs), so the four forwarded levels are listed. The
+# 2026-09-29 changelog notes "minimal"/"medium" do not change cost, only served thinking.
 # Release date: Augure does not publish one; the model is first attested on the API in
 # the 2026-08-18 changelog entry, so the month is used.
 # Prices: CAD 2.50 in / 6.00 out per 1M tokens, converted to USD at the Bank of Canada
