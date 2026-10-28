@@ -6,19 +6,18 @@
 # served as "low", "no setting shortens the thinking as served today"), and
 # https://augureai.ca/docs/changelog (added 2026-10-16). Augure's API has temperature and
 # top_p but no top_k.
-# Effort: Augure validates reasoning_effort against its own enum (none|minimal|low|medium|high;
-# "max" is a 400 on Augure) and forwards the literal, with "none" served as "low". The lab's
-# low|high|max set therefore does not apply at this surface; the forwarded values are listed.
-# Augure's docs add that, as served today, no setting shortens the thinking.
-# Prices: CAD 3.00 in / 7.00 out per 1M tokens, converted to USD at the Bank of Canada
-# rate of 1.4038 CAD per USD (2026-10-27), rounded to 2 decimals. Cached input is billed
-# at the standard input rate. Preview: no SLA and pricing may change, hence status = beta.
+# Effort: authored as always-on with no caller control. Augure's model page states, for
+# this route only, that reasoning_effort is "Accepted. 'none' is served as 'low'; no setting
+# shortens the thinking as served today" (https://augureai.ca/docs/models). The lab's
+# low|high|max set is therefore not exposed here. open-qwen-3.8-flash-next differs by
+# design: its row says the field is "Sent to the model unchanged", so that file lists the
+# lab's native levels.
 schema = 2
 base_model = "zhipuai/glm-5.3"
 status = "beta"
 
 [capabilities]
-reasoning = { supported = true, effort = ["minimal", "low", "medium", "high"] }
+reasoning = { supported = true }
 structured_output = true
 stream_usage = true
 top_k = false
