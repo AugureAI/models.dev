@@ -6,7 +6,10 @@
 # served as "low", "no setting shortens the thinking as served today"), and
 # https://augureai.ca/docs/changelog (added 2026-10-16). Augure's API has temperature and
 # top_p but no top_k.
-# Reasoning is authored as always-on with no caller control, per the per-model row above.
+# Effort: Augure validates reasoning_effort against its own enum (none|minimal|low|medium|high;
+# "max" is a 400 on Augure) and forwards the literal, with "none" served as "low". The lab's
+# low|high|max set therefore does not apply at this surface; the forwarded values are listed.
+# Augure's docs add that, as served today, no setting shortens the thinking.
 # Prices: CAD 3.00 in / 7.00 out per 1M tokens, converted to USD at the Bank of Canada
 # rate of 1.4038 CAD per USD (2026-10-27), rounded to 2 decimals. Cached input is billed
 # at the standard input rate. Preview: no SLA and pricing may change, hence status = beta.
@@ -15,7 +18,7 @@ base_model = "zhipuai/glm-5.3"
 status = "beta"
 
 [capabilities]
-reasoning = { supported = true }
+reasoning = { supported = true, effort = ["minimal", "low", "medium", "high"] }
 structured_output = true
 stream_usage = true
 top_k = false
